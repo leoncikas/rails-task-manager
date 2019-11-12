@@ -1,0 +1,18 @@
+<h1>List of tasks</h1>
+<%= link_to 'Create new', new_task_path, class: 'btn btn-primary' %>
+<table class="table">
+  <tr>
+    <th>Completed?</th>
+    <th>Title</th>
+  </tr>
+
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= check_box "task", "completed", {:checked => task.completed, :disabled => true}%></td>
+      <td><%= link_to task.title, task_path(task) %></td>
+      <td><%= link_to '💣', task_path(task), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+
